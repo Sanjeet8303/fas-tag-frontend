@@ -26,7 +26,8 @@ const Offers = () => {
       iconColor: "#00BFFF",
     },
   ];
-
+  const viewportWidth = window.innerWidth;
+  console.log("Viewport width:", viewportWidth);
   return (
     <div style={{ display: "flex", minHeight: "10vh" }}>
       {/* Sidebar Section */}
@@ -35,7 +36,7 @@ const Offers = () => {
       </div> */}
 
       {/* Offers Section */}
-      <div className="offers-container shadow-sm flex-grow-1">
+      <div className="offers-container shadow-sm flex-grow-1" style={{ marginLeft: `${viewportWidth < 700 ? "0%" : "20%"}` }}>
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h4 className="fw-bold text-dark">
             <i className="fa-solid fa-gift me-2 text-danger"></i> Exclusive Offers
