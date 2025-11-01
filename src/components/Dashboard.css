@@ -1,0 +1,518 @@
+/* Reset and base */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f8f9fa;
+}
+
+/* Layout */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background-color: #004d4d;
+  color: white;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  transition: transform 0.28s ease, left 0.28s ease;
+}
+
+/* Main area */
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e0f7fa;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.header h4 {
+  margin: 0;
+  color: #003737;
+  font-weight: 700;
+  flex: 1 1 auto;
+  font-size: 1.15rem;
+}
+
+.wallet-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+}
+
+.user-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #004d4d;
+  color: white;
+  transition: background-color 0.2s ease, transform 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:hover {
+  background-color: #003737;
+}
+
+.btn-small {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+}
+
+/* Modal Styles */
+.modal-backdrop,
+.modal.fade.show {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 540px;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-close {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Preset amounts */
+.preset-amounts {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.preset-amounts button {
+  flex: 1;
+  border: 2px solid #2e7d32;
+  background: none;
+  color: black;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.75rem 0;
+  transition: background-color 0.2s ease;
+  min-width: 60px;
+}
+
+.preset-amounts button:hover {
+  background-color: #2e7d32;
+  color: white;
+}
+
+/* Form controls */
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  outline-offset: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #004d4d;
+  outline: none;
+}
+
+/* Search section */
+.search-container {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.search-container img {
+  width: 120px;
+  margin-bottom: 0.5rem;
+}
+
+.search-container input[type="text"] {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  outline-offset: 2px;
+  transition: border-color 0.2s ease;
+}
+
+/* Bank cards grid */
+.bank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+
+.bank-card {
+  background: white;
+  border-radius: 12px;
+  padding: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, transform 0.12s ease;
+  min-height: 75px;
+}
+
+.bank-card:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  transform: translateY(-3px);
+}
+
+.bank-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Recharge container */
+.recharge-container {
+  background: white;
+  padding: 1.5rem 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.recharge-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.recharge-header img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.recharge-header h6 {
+  font-weight: 600;
+  margin: 0;
+  flex-grow: 1;
+  margin-left: 1rem;
+}
+
+.recharge-header button {
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Inputs and next button */
+.vehicle-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1.05rem;
+  border-radius: 10px;
+  border: 1.5px solid #ccc;
+  margin-bottom: 1rem;
+  outline-offset: 2px;
+  transition: border-color 0.2s ease;
+}
+
+.next-button {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.05rem;
+  background-color: #004d4d;
+  color: white;
+  border-radius: 10px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.next-button:hover {
+  background-color: #003737;
+}
+
+/* Illustration */
+.illustration {
+  width: 100%;
+  max-width: 350px;
+  margin-top: 1.5rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Small utilities */
+.menu-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Sidebar mobile behavior (tablet & below) */
+@media (max-width: 991px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    z-index: 1200;
+    width: 86%;
+    max-width: 320px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.03);
+  }
+
+  .sidebar.sidebar-open {
+    left: 0;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1100;
+  }
+
+  .sidebar .profile-img {
+    width: 72px !important;
+    height: 72px;
+  }
+
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .menu-icon {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 1300;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+}
+
+/* Mobile first: narrow phones */
+@media (max-width: 767px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    padding: 0.75rem;
+  }
+
+  .header h4 {
+    font-size: 1rem;
+  }
+
+  .wallet-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .search-container input[type="text"] {
+    max-width: 100%;
+  }
+
+  .bank-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 0 0.25rem;
+  }
+
+  .bank-card {
+    padding: 0.8rem;
+    min-height: 68px;
+  }
+
+  .bank-logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .recharge-container {
+    padding: 1rem;
+  }
+
+  .vehicle-input {
+    font-size: 1rem;
+    padding: 0.7rem;
+  }
+
+  .next-button {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  .illustration {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+
+  .modal {
+    padding: 1rem;
+    max-width: 420px;
+  }
+
+  .preset-amounts button {
+    padding: 0.6rem 0;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  .bank-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .header h4 {
+    font-size: 0.98rem;
+  }
+
+  .wallet-section span,
+  .wallet-section i {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 0.55rem 0.85rem;
+  }
+
+  .sidebar {
+    width: 92%;
+    max-width: 300px;
+  }
+
+  .menu-icon {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Desktop: ensure sidebar visible */
+@media (min-width: 992px) {
+  .sidebar {
+    left: 0;
+    position: relative;
+    width: 260px;
+    height: 100vh;
+    transition: none;
+    box-shadow: none;
+  }
+
+  .sidebar-backdrop {
+    display: none;
+  }
+
+  .menu-icon {
+    display: none !important;
+  }
+}
+
+/* Accessibility focus outlines for keyboard users */
+:focus {
+  outline: 3px solid rgba(0, 77, 77, 0.18);
+  outline-offset: 2px;
+}
